@@ -1,6 +1,6 @@
 {
   "name": "xena-integrations",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "components for embedding UCSC Xena in other apps",
   "main": "main.js",
   "scripts": {
