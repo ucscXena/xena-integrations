@@ -5,21 +5,21 @@
 
 require('babel-polyfill');
 
-var _ = require('ucsc-xena-client/underscore_ext');
-require('ucsc-xena-client/plotDenseMatrix');
-require('ucsc-xena-client/plotMutationVector');
+var _ = require('ucsc-xena-client/dist/underscore_ext');
+require('ucsc-xena-client/dist/plotDenseMatrix');
+require('ucsc-xena-client/dist/plotMutationVector');
 require('./mutationLegend');
-require('ucsc-xena-client/models/denseMatrix');
-require('ucsc-xena-client/models/mutationVector');
-var uiController = require('ucsc-xena-client/controllers/ui');
-var serverController = require('ucsc-xena-client/controllers/server');
-var icgcController = require('ucsc-xena-client/controllers/icgc');
+require('ucsc-xena-client/dist/models/denseMatrix');
+require('ucsc-xena-client/dist/models/mutationVector');
+var uiController = require('ucsc-xena-client/dist/controllers/ui');
+var serverController = require('ucsc-xena-client/dist/controllers/server');
+var icgcController = require('./icgc');
 require('bootstrap/dist/css/bootstrap.css');
 var Application = require('./ApplicationContainer');
-var selector = require('ucsc-xena-client/appSelector');
-var compose = require('ucsc-xena-client/controllers/compose');
-const connector = require('ucsc-xena-client/connector');
-const createStore = require('ucsc-xena-client/store');
+var selector = require('ucsc-xena-client/dist/appSelector');
+var compose = require('ucsc-xena-client/dist/controllers/compose');
+const connector = require('ucsc-xena-client/dist/connector');
+const createStore = require('ucsc-xena-client/dist/store');
 
 // Hot load controllers. Note that hot loading won't work if one of the methods
 // is captured in a closure or variable which we can't access.  References to

@@ -4,19 +4,19 @@
 // XXX move Application to views
 var Application = require('./Application');
 var React = require('react');
-var {getSpreadsheetContainer} = require('ucsc-xena-client/containers/SpreadsheetContainer');
+var {getSpreadsheetContainer} = require('ucsc-xena-client/dist/containers/SpreadsheetContainer');
 var Column = require('./Column');
-var _ = require('ucsc-xena-client/underscore_ext');
-var kmModel = require('ucsc-xena-client/models/km');
-var {lookupSample} = require('ucsc-xena-client/models/sample');
-var {xenaFieldPaths} = require('ucsc-xena-client/models/fieldSpec');
-var {rxEventsMixin} = require('ucsc-xena-client/react-utils');
+var _ = require('ucsc-xena-client/dist/underscore_ext');
+var kmModel = require('ucsc-xena-client/dist/models/km');
+var {lookupSample} = require('ucsc-xena-client/dist/models/sample');
+var {xenaFieldPaths} = require('ucsc-xena-client/dist/models/fieldSpec');
+var {rxEventsMixin} = require('ucsc-xena-client/dist/react-utils');
 var Rx = require('rx');
 // Spreadsheet options
-var addTooltip = require('ucsc-xena-client/views/addTooltip');
-var disableSelect = require('ucsc-xena-client/views/disableSelect');
-var makeSortable = require('ucsc-xena-client/views/makeSortable');
-var getSpreadsheet = require('ucsc-xena-client/Spreadsheet');
+var addTooltip = require('ucsc-xena-client/dist/views/addTooltip');
+var disableSelect = require('ucsc-xena-client/dist/views/disableSelect');
+var makeSortable = require('ucsc-xena-client/dist/views/makeSortable');
+var getSpreadsheet = require('ucsc-xena-client/dist/Spreadsheet');
 
 // This seems odd. Surely there's a better test?
 function hasSurvival(survival) {

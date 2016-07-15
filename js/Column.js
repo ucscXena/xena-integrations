@@ -4,16 +4,16 @@
 
 var React = require('react');
 var ReactDOM = require('react-dom');
-var _ = require('ucsc-xena-client/underscore_ext');
+var _ = require('ucsc-xena-client/dist/underscore_ext');
 var MenuItem = require('react-bootstrap/lib/MenuItem');
 var SplitButton = require('react-bootstrap/lib/SplitButton');
 var Badge = require('react-bootstrap/lib/Badge');
-var DefaultTextInput = require('ucsc-xena-client/views/DefaultTextInput');
-var {RefGeneAnnotation} = require('ucsc-xena-client/refGeneExons');
-var ResizeOverlay = require('ucsc-xena-client/views/ResizeOverlay');
-var widgets = require('ucsc-xena-client/columnWidgets');
-var aboutDatasetMenu = require('ucsc-xena-client/views/aboutDatasetMenu');
-var spinner = require('ucsc-xena-client/ajax-loader.gif');
+var DefaultTextInput = require('ucsc-xena-client/dist/views/DefaultTextInput');
+var {RefGeneAnnotation} = require('ucsc-xena-client/dist/refGeneExons');
+var ResizeOverlay = require('ucsc-xena-client/dist/views/ResizeOverlay');
+var widgets = require('ucsc-xena-client/dist/columnWidgets');
+var aboutDatasetMenu = require('ucsc-xena-client/dist/views/aboutDatasetMenu');
+var spinner = require('ucsc-xena-client/dist/ajax-loader.gif');
 
 var xenaRoot = 'https://genome-cancer.ucsc.edu/proj/site/xena';
 

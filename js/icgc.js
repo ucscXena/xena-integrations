@@ -4,14 +4,14 @@
 
 'use strict';
 
-var _ = require('ucsc-xena-client/underscore_ext');
-var {fetchColumnData, fetchSamples} = require('./common');
-var uuid = require('ucsc-xena-client/uuid');
-var {getColSpec} = require('ucsc-xena-client/models/datasetJoins');
-var {defaultColorClass} = require('ucsc-xena-client/heatmapColors');
-var GeneProbeEdit = require('ucsc-xena-client/views/GeneProbeEdit');
-var GeneEdit = require('ucsc-xena-client/views/GeneEdit');
-var PhenotypeEdit = require('ucsc-xena-client/views/PhenotypeEdit');
+var _ = require('ucsc-xena-client/dist/underscore_ext');
+var {fetchColumnData, fetchSamples} = require('ucsc-xena-client/dist/controllers/common');
+var uuid = require('ucsc-xena-client/dist/uuid');
+var {getColSpec} = require('ucsc-xena-client/dist/models/datasetJoins');
+var {defaultColorClass} = require('ucsc-xena-client/dist/heatmapColors');
+var GeneProbeEdit = require('ucsc-xena-client/dist/views/GeneProbeEdit');
+var GeneEdit = require('ucsc-xena-client/dist/views/GeneEdit');
+var PhenotypeEdit = require('ucsc-xena-client/dist/views/PhenotypeEdit');
 
 var dsIDs = {
 	mutation: '{"host":"https://icgc.xenahubs.net","name":"simple_somatic_mutation.open.donor.xena.hasRNASNV"}',

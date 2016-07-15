@@ -1,10 +1,10 @@
 /*global require: false, module: false */
 'use strict';
 
-var _ = require('ucsc-xena-client/underscore_ext');
-var Legend = require('ucsc-xena-client/views/Legend');
-var {features} = require('ucsc-xena-client/models/mutationVector');
-var widgets = require('ucsc-xena-client/columnWidgets');
+var _ = require('ucsc-xena-client/dist/underscore_ext');
+var Legend = require('ucsc-xena-client/dist/views/Legend');
+var {features} = require('ucsc-xena-client/dist/models/mutationVector');
+var widgets = require('ucsc-xena-client/dist/columnWidgets');
 var React = require('react');
 
 // Override default mutation legend.
