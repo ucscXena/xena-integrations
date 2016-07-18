@@ -6,8 +6,11 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var _ = require('ucsc-xena-client/dist/underscore_ext');
 var MenuItem = require('react-bootstrap/lib/MenuItem');
-var SplitButton = require('react-bootstrap/lib/SplitButton');
+var Dropdown = require('react-bootstrap/lib/Dropdown');
+var Button = require('react-bootstrap/lib/Button');
 var Badge = require('react-bootstrap/lib/Badge');
+var Tooltip = require('react-bootstrap/lib/Tooltip');
+var OverlayTrigger = require('react-bootstrap/lib/OverlayTrigger');
 var DefaultTextInput = require('ucsc-xena-client/dist/views/DefaultTextInput');
 var {RefGeneAnnotation} = require('ucsc-xena-client/dist/refGeneExons');
 var ResizeOverlay = require('ucsc-xena-client/dist/views/ResizeOverlay');
@@ -55,6 +58,13 @@ var styles = {
 		textAlign: 'center',
 		pointerEvents: 'all',
 		cursor: 'pointer'
+	},
+	columnMenuToggle: {
+		position: 'absolute',
+		left: 0,
+		top: 0,
+		width: '100%',
+		height: '100%'
 	}
 };
 
@@ -127,23 +137,35 @@ var Column = React.createClass({
 			status = _.get(data, 'status'),
 			// move this to state to generalize to other annotations.
 			doRefGene = _.get(data, 'refGene'),
-			// In FF spans don't appear as event targets. In Chrome, they do.
-			// If we omit Sortable-handle here, Chrome will only catch events
-			// in the button but not in the span. If we omit Sortable-handle
-			// in SplitButton, FF will catch no events, since span doesn't
-			// emit any.
-			moveIcon = (<span
-				className="glyphicon glyphicon-resize-horizontal Sortable-handle"
-				aria-hidden="true">
-			</span>);
+			sortHelp = <Tooltip className='xena'>Drag to change column order</Tooltip>,
+			menuHelp = <Tooltip className='xena'>Column menu</Tooltip>,
+			moveIcon = (
+				<OverlayTrigger placement='top' overlay={sortHelp}>
+					<span
+						className="glyphicon glyphicon-resize-horizontal Sortable-handle"
+						aria-hidden="true">
+					</span>
+				</OverlayTrigger>);
 
 		return (
 			<div className='Column' style={{width: width, position: 'relative'}}>
 				<br/>
-				<SplitButton ref='controls' className='Sortable-handle' title={moveIcon} bsSize='xsmall'>
-					<MenuItem onSelect={this.onDownload}>Download</MenuItem>
-					{aboutDatasetMenu(datasetMeta(id), xenaRoot)}
-				</SplitButton>
+				{/* Using Dropdown instead of SplitButton so we can put a Tooltip on the caret. :-p */}
+				<Dropdown ref='controls' bsSize='xsmall'>
+					<Button componentClass='label'>
+						{moveIcon}
+					</Button>
+					{/* If OverlayTrigger contains Dropdown.Toggle, the toggle doesn't work. So we invert the nesting and use a span to cover the trigger area. */}
+					<Dropdown.Toggle componentClass='label'>
+						<OverlayTrigger placement='top' overlay={menuHelp}>
+							<span style={styles.columnMenuToggle}></span>
+						</OverlayTrigger>
+					</Dropdown.Toggle>
+					<Dropdown.Menu>
+						<MenuItem onSelect={this.onDownload}>Download</MenuItem>
+						{aboutDatasetMenu(datasetMeta(id), xenaRoot)}
+					</Dropdown.Menu>
+				</Dropdown>
 				<Badge ref='label' style={styles.badge} className='pull-right'>{label}</Badge>
 				<br/>
 				<DefaultTextInput

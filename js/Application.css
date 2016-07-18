@@ -1,0 +1,16 @@
+/* restore default bootstrap tooltip css */
+
+.xena.tooltip {
+	border: 0;
+	background: rgba(0, 0, 0, 0);
+}
+
+
+.xena.top.tooltip:after {
+	border-top-color: rgba(0, 0, 0, 0);
+}
+
+.xena.top.tooltip:before {
+	border-top-color: rgba(0, 0, 0, 0);
+}
+
