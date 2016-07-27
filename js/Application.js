@@ -6,6 +6,8 @@ var Grid = require('react-bootstrap/lib/Grid');
 var Row = require('react-bootstrap/lib/Row');
 var Col = require('react-bootstrap/lib/Col');
 var Button = require('react-bootstrap/lib/Button');
+var KmPlot = require('ucsc-xena-client/dist/KmPlot');
+var _ = require('ucsc-xena-client/dist/underscore_ext');
 require('./Application.css');
 
 var Application = React.createClass({
@@ -20,7 +22,7 @@ var Application = React.createClass({
 		window.open('https://genome-cancer.ucsc.edu/proj/site/xena/heatmap/?inline');
 	},
 	render: function() {
-		let {children} = this.props;
+		let {state, children} = this.props;
 
 		return (
 			<Grid onClick={this.onClick}>
@@ -30,6 +32,10 @@ var Application = React.createClass({
 					</Col>
 				</Row>
 				{children}
+				{_.getIn(state, ['km', 'id']) ? <KmPlot
+						callback={this.props.callback}
+						km={state.km}
+						features={state.features} /> : null}
 			</Grid>
 		);
 	}

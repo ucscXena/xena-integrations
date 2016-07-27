@@ -132,8 +132,9 @@ var Column = React.createClass({
 	},
 	render: function () {
 		var {id, label, samples, column, index,
-				zoom, data, datasetMeta, fieldFormat, sampleFormat, onClick, tooltip} = this.props,
+				zoom, data, datasetMeta, fieldFormat, sampleFormat, disableKM, onClick, tooltip} = this.props,
 			{width, columnLabel, fieldLabel, user} = column,
+			[kmDisabled, kmTitle] = disableKM(id),
 			status = _.get(data, 'status'),
 			// move this to state to generalize to other annotations.
 			doRefGene = _.get(data, 'refGene'),
@@ -162,6 +163,7 @@ var Column = React.createClass({
 						</OverlayTrigger>
 					</Dropdown.Toggle>
 					<Dropdown.Menu>
+						<MenuItem title={kmTitle} onSelect={this.onKm} disabled={kmDisabled}>Kaplan Meier Plot</MenuItem>
 						<MenuItem onSelect={this.onDownload}>Download</MenuItem>
 						{aboutDatasetMenu(datasetMeta(id), xenaRoot)}
 					</Dropdown.Menu>
